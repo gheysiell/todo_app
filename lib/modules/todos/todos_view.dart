@@ -32,7 +32,7 @@ class TodoViewState extends State<TodoView> {
           (MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top - AppBar().preferredSize.height);
 
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        _todosViewModel.getTodos(context);
+        getTodosHandler();
       });
 
       _initialized = true;
