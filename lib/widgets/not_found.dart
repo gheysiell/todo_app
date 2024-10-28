@@ -40,7 +40,7 @@ class NotFoundComponent extends StatelessWidget {
             Text(
               title,
               style: const TextStyle(
-                fontSize: 16,
+                fontSize: 18,
                 color: Palette.silver,
                 fontWeight: FontWeight.w600,
               ),
