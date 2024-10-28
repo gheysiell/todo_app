@@ -1,5 +1,5 @@
 name: todo_app
-description: "Lista de taredas"
+description: "Lista de tarefas"
 publish_to: 'none' 
 version: 1.0.0+1
 
