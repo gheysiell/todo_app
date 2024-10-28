@@ -178,7 +178,7 @@ class TodosDetailsViewState extends State<TodosDetailsView> {
                         const Text(
                           'Concluída',
                           style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 19,
                             fontWeight: FontWeight.w500,
                             color: Palette.silverBold,
                           ),

@@ -4,8 +4,8 @@ import 'package:todo_app/utils/palette.dart';
 class TextFormFieldStyles {
   static TextStyle textStyle() => const TextStyle(
         decorationThickness: 0,
-        fontSize: 16,
-        fontWeight: FontWeight.w600,
+        fontSize: 19,
+        fontWeight: FontWeight.w500,
         color: Palette.silver,
       );
 
