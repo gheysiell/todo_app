@@ -34,8 +34,10 @@ class TodosDetailsViewState extends State<TodosDetailsView> {
 
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (widget.typeSave == TypeSave.insert) {
-          _todosDetailsViewModel.focusNodeDescription.requestFocus();
-          _todosDetailsViewModel.setFocusNodeDescription(_todosDetailsViewModel.focusNodeDescription);
+          Future.delayed(const Duration(milliseconds: 100), () {
+            _todosDetailsViewModel.focusNodeDescription.requestFocus();
+            _todosDetailsViewModel.setFocusNodeDescription(_todosDetailsViewModel.focusNodeDescription);
+          });
         }
       });
 
