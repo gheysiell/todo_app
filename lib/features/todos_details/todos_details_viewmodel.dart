@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:todo_app/modules/todos/todos_model.dart';
-import 'package:todo_app/modules/todos/todos_view_model.dart';
-import 'package:todo_app/utils/enums.dart';
-import 'package:todo_app/utils/functions.dart';
-import 'package:todo_app/utils/validators.dart';
+import 'package:todo_app/features/todos/todos_model.dart';
+import 'package:todo_app/features/todos/todos_viewmodel.dart';
+import 'package:todo_app/core/enums.dart';
+import 'package:todo_app/shared/functions.dart';
+import 'package:todo_app/shared/validators.dart';
 
 class TodosDetailsViewModel extends ChangeNotifier {
   late Todo todo;
+  TodosViewModel todosViewModel;
   TextEditingController textEditingControllerDescription = TextEditingController();
   FocusNode focusNodeDescription = FocusNode();
   bool completed = false;
   bool showDescriptionFieldRequired = false;
   bool loaderVisible = false;
+
+  TodosDetailsViewModel({
+    required this.todosViewModel,
+  });
 
   void setTodo(Todo value) {
     todo = value;
@@ -69,19 +73,19 @@ class TodosDetailsViewModel extends ChangeNotifier {
       return;
     }
 
-    setLoaderVisible(true);
     TypeMessageDialog typeMessageDialog;
     ResponseStatus responseStatus;
     String operationNameSuccess;
     String operationName;
     String messageDialog;
-    TodosViewModel todosViewModel = Provider.of<TodosViewModel>(context, listen: false);
 
     Todo todoEntry = Todo(
       id: todo.id,
       description: textEditingControllerDescription.text,
       completed: completed,
     );
+
+    setLoaderVisible(true);
 
     if (typeSave == TypeSave.insert) {
       responseStatus = await todosViewModel.insertTodo(todoEntry);
@@ -92,6 +96,8 @@ class TodosDetailsViewModel extends ChangeNotifier {
       operationNameSuccess = 'alterada';
       operationName = 'alterar';
     }
+
+    setLoaderVisible(false);
 
     if (responseStatus == ResponseStatus.success) {
       typeMessageDialog = TypeMessageDialog.info;
@@ -104,10 +110,10 @@ class TodosDetailsViewModel extends ChangeNotifier {
       messageDialog = 'Tempo de consulta excedido, tente novamente.';
     }
 
-    setLoaderVisible(false);
+    if (context.mounted) await Functions.showGeneralAlertDialog(context, messageDialog, typeMessageDialog);
+
     if (responseStatus != ResponseStatus.success) return;
 
-    if (context.mounted) await Functions.showGeneralAlertDialog(context, messageDialog, typeMessageDialog);
     if (context.mounted) navigateBack(context);
     if (context.mounted) todosViewModel.getTodos(context);
   }
@@ -117,7 +123,6 @@ class TodosDetailsViewModel extends ChangeNotifier {
     ResponseStatus responseStatus;
     String messageDialog;
     double width = MediaQuery.of(context).size.width;
-    TodosViewModel todosViewModel = Provider.of<TodosViewModel>(context, listen: false);
 
     if (!await Functions.dialogConfirmationDanger(
       context,
@@ -127,7 +132,10 @@ class TodosDetailsViewModel extends ChangeNotifier {
     )) return;
 
     setLoaderVisible(true);
+
     responseStatus = await todosViewModel.deleteTodo(todo.id);
+
+    setLoaderVisible(false);
 
     if (responseStatus == ResponseStatus.success) {
       typeMessageDialog = TypeMessageDialog.info;
@@ -140,10 +148,10 @@ class TodosDetailsViewModel extends ChangeNotifier {
       messageDialog = 'Tempo de consulta excedido, tente novamente.';
     }
 
-    setLoaderVisible(false);
+    if (context.mounted) await Functions.showGeneralAlertDialog(context, messageDialog, typeMessageDialog);
+
     if (responseStatus != ResponseStatus.success) return;
 
-    if (context.mounted) await Functions.showGeneralAlertDialog(context, messageDialog, typeMessageDialog);
     if (context.mounted) navigateBack(context);
     if (context.mounted) todosViewModel.getTodos(context);
   }

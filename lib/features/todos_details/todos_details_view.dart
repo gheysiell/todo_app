@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:form_validator/form_validator.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_app/modules/todos_details/todos_details_view_model.dart';
-import 'package:todo_app/utils/enums.dart';
-import 'package:todo_app/utils/palette.dart';
-import 'package:todo_app/utils/styles.dart';
-import 'package:todo_app/widgets/app_bar.dart';
-import 'package:todo_app/widgets/loader.dart';
+import 'package:todo_app/features/todos_details/todos_details_viewmodel.dart';
+import 'package:todo_app/core/enums.dart';
+import 'package:todo_app/shared/palette.dart';
+import 'package:todo_app/shared/styles.dart';
+import 'package:todo_app/shared/widgets/app_bar.dart';
+import 'package:todo_app/shared/widgets/loader.dart';
 
 class TodosDetailsView extends StatefulWidget {
   final TypeSave? typeSave;

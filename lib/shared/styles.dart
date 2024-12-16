@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/utils/palette.dart';
+import 'package:todo_app/shared/palette.dart';
 
 class TextFormFieldStyles {
   static TextStyle textStyle() => const TextStyle(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/utils/enums.dart';
-import 'package:todo_app/utils/palette.dart';
-import 'package:todo_app/widgets/alert_dialog.dart';
-import 'package:todo_app/widgets/bottom_buttons_dialog.dart';
+import 'package:todo_app/core/enums.dart';
+import 'package:todo_app/shared/palette.dart';
+import 'package:todo_app/shared/widgets/alert_dialog.dart';
+import 'package:todo_app/shared/widgets/bottom_buttons_dialog.dart';
 import 'package:vibration/vibration.dart';
 
 class Functions {

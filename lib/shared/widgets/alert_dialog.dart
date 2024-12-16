@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/utils/palette.dart';
+import 'package:todo_app/shared/palette.dart';
 
 class AlertDialogWidget extends StatelessWidget {
   final String title;
   final String subTitle;
-  final Widget icon;  
+  final Widget icon;
 
   const AlertDialogWidget({
     super.key,
@@ -37,7 +37,7 @@ class AlertDialogWidget extends StatelessWidget {
       actions: <Widget>[
         TextButton(
           onPressed: () => {
-            Navigator.pop(context),            
+            Navigator.pop(context),
           },
           style: TextButton.styleFrom(foregroundColor: Palette.blueSoft),
           child: const Text(

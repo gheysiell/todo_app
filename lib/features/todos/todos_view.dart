@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_app/modules/todos/todos_model.dart';
-import 'package:todo_app/modules/todos/todos_view_model.dart';
-import 'package:todo_app/utils/enums.dart';
-import 'package:todo_app/utils/palette.dart';
-import 'package:todo_app/widgets/app_bar.dart';
-import 'package:todo_app/widgets/loader.dart';
-import 'package:todo_app/widgets/not_found.dart';
+import 'package:todo_app/features/todos/todos_model.dart';
+import 'package:todo_app/features/todos/todos_viewmodel.dart';
+import 'package:todo_app/core/enums.dart';
+import 'package:todo_app/shared/palette.dart';
+import 'package:todo_app/shared/widgets/app_bar.dart';
+import 'package:todo_app/shared/widgets/loader.dart';
+import 'package:todo_app/shared/widgets/not_found.dart';
 
 class TodoView extends StatefulWidget {
   const TodoView({super.key});
@@ -26,25 +26,25 @@ class TodoViewState extends State<TodoView> {
     super.didChangeDependencies();
 
     if (!_initialized) {
-      _todosViewModel = Provider.of<TodosViewModel>(context);
+      _todosViewModel = context.watch<TodosViewModel>();
       heightPaddingBottom = MediaQuery.of(context).padding.bottom;
       heightBody =
           (MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top - AppBar().preferredSize.height);
 
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        getTodosHandler();
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        await getTodosHandler();
       });
 
       _initialized = true;
     }
   }
 
-  void navigateToDetailsHandler(TypeSave typeSave, Todo? todo) {
-    _todosViewModel.navigateToDetails(context, typeSave, todo);
-  }
-
   Future<void> getTodosHandler() async {
     await _todosViewModel.getTodos(context);
+  }
+
+  void navigateToDetailsHandler(TypeSave typeSave, Todo? todo) {
+    _todosViewModel.navigateToDetails(context, typeSave, todo);
   }
 
   @override

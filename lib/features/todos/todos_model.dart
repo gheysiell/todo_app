@@ -1,5 +1,3 @@
-import 'package:todo_app/utils/enums.dart';
-
 class Todo {
   final int id;
   final String description;
@@ -15,7 +13,7 @@ class Todo {
     return Todo(
       id: map['id'] as int,
       description: map['description'] as String,
-      completed: map['completed'] as bool,
+      completed: map['completed'] == 1 ? true : false,
     );
   }
 
@@ -34,14 +32,4 @@ class Todo {
       completed: false,
     );
   }
-}
-
-class TodoResult {
-  ResponseStatus responseStatus;
-  List<Todo> todos;
-
-  TodoResult({
-    required this.responseStatus,
-    required this.todos,
-  });
 }

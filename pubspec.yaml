@@ -33,6 +33,13 @@ flutter:
   assets:
     - assets/animations/
     - assets/images/
+    - assets/fonts/
+  fonts:
+    - family: Nunito
+      fonts:
+        - asset: assets/fonts/Nunito/static/Nunito-Regular.ttf
+        - asset: assets/fonts/Nunito/static/Nunito-Bold.ttf
+          weight: 700
 
 flutter_icons: 
   android: "launcher_icon"

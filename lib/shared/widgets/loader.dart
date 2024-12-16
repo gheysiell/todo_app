@@ -1,4 +1,4 @@
-import 'package:todo_app/utils/palette.dart';
+import 'package:todo_app/shared/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 

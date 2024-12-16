@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_app/modules/todos_details/todos_details_view.dart';
-import 'package:todo_app/modules/todos_details/todos_details_view_model.dart';
-import 'package:todo_app/modules/todos/todos_model.dart';
-import 'package:todo_app/modules/todos/todos_repository.dart';
-import 'package:todo_app/utils/enums.dart';
-import 'package:todo_app/utils/functions.dart';
-import 'package:todo_app/utils/palette.dart';
+import 'package:todo_app/features/todos/todos_result_model.dart';
+import 'package:todo_app/features/todos_details/todos_details_view.dart';
+import 'package:todo_app/features/todos_details/todos_details_viewmodel.dart';
+import 'package:todo_app/features/todos/todos_model.dart';
+import 'package:todo_app/features/todos/todos_repository.dart';
+import 'package:todo_app/core/enums.dart';
+import 'package:todo_app/shared/functions.dart';
+import 'package:todo_app/shared/palette.dart';
 
 class TodosViewModel extends ChangeNotifier {
   TodoRepository todoRepository = TodoRepository();
@@ -27,6 +28,9 @@ class TodosViewModel extends ChangeNotifier {
     setLoaderVisible(true);
 
     TodoResult response = await todoRepository.getTodos();
+
+    setLoaderVisible(false);
+
     String messageError = '';
 
     setTodos(response.todos);
@@ -44,8 +48,6 @@ class TodosViewModel extends ChangeNotifier {
         TypeMessageDialog.error,
       );
     }
-
-    setLoaderVisible(false);
   }
 
   Future<ResponseStatus> insertTodo(Todo todo) async {

@@ -1,4 +1,4 @@
-import 'package:todo_app/utils/palette.dart';
+import 'package:todo_app/shared/palette.dart';
 import 'package:flutter/material.dart';
 
 class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
@@ -26,7 +26,11 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
       surfaceTintColor: Palette.primary,
       title: Text(
         title,
-        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Palette.white),
+        style: const TextStyle(
+          fontSize: 22,
+          fontWeight: FontWeight.w700,
+          color: Palette.white,
+        ),
       ),
       leading: leading,
       actions: actions,

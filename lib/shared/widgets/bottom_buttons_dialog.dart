@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/utils/palette.dart';
-import 'package:todo_app/utils/styles.dart';
+import 'package:todo_app/shared/palette.dart';
+import 'package:todo_app/shared/styles.dart';
 
 class BottomButtonsDialog extends StatelessWidget {
   final String titleConfirmationButton;
