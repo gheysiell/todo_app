@@ -54,12 +54,8 @@ class TodoViewState extends State<TodoView> {
         Scaffold(
           appBar: AppBarComponent(
             title: 'Lista de tarefas',
-            leading: Container(
-              margin: const EdgeInsets.only(left: 12),
-              child: Image.asset(
-                './assets/images/app_icon.png',
-                fit: BoxFit.contain,
-              ),
+            leading: Image.asset(
+              './assets/images/icon.png',
             ),
           ),
           body: RefreshIndicator(

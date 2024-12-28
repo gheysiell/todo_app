@@ -24,6 +24,7 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
       shadowColor: Palette.grey400,
       backgroundColor: Palette.primary,
       surfaceTintColor: Palette.primary,
+      titleSpacing: 6,
       title: Text(
         title,
         style: const TextStyle(
