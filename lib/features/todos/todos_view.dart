@@ -17,8 +17,6 @@ class TodoView extends StatefulWidget {
 
 class TodoViewState extends State<TodoView> {
   late TodosViewModel _todosViewModel;
-  late double heightPaddingBottom;
-  late double heightBody;
   bool _initialized = false;
 
   @override
@@ -27,9 +25,6 @@ class TodoViewState extends State<TodoView> {
 
     if (!_initialized) {
       _todosViewModel = context.watch<TodosViewModel>();
-      heightPaddingBottom = MediaQuery.of(context).padding.bottom;
-      heightBody =
-          (MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top - AppBar().preferredSize.height);
 
       WidgetsBinding.instance.addPostFrameCallback((_) async {
         await getTodosHandler();
@@ -69,8 +64,10 @@ class TodoViewState extends State<TodoView> {
                     padding: 10,
                     contextArg: context,
                     title: 'Tarefas não encontradas',
-                    heightBody: heightBody,
-                    heightPaddingBottom: heightPaddingBottom,
+                    heightBody: (MediaQuery.of(context).size.height -
+                        MediaQuery.of(context).padding.top -
+                        AppBar().preferredSize.height),
+                    heightPaddingBottom: MediaQuery.of(context).padding.bottom,
                   )
                 : ListView.builder(
                     itemCount: _todosViewModel.todos.length,

@@ -13,7 +13,7 @@ The project follows the **MVVM (Model-View-ViewModel)** architecture with a **fe
 
 ## Project Statistics
 
-- **Lines of code**: 1,357
+- **Lines of code**: 1,354
 - **Files**: 22
 - **Folders**: 6
 - **Screens**: 2
